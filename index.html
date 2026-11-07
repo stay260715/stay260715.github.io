@@ -52,6 +52,78 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "방을 먼저 보고 계약할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 전화나 카카오톡으로 방문 시간을 예약하시면 실제 공실을 직접 보여드립니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "여성 전용 층이 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "여성전용 구역과 혼용 구역을 나누어 운영합니다. 원하시는 구역의 공실을 문의해 주세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "하루·일주일 단기 숙박도 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "죄송하지만 단기 숙박은 받지 않습니다. 최소 1개월 단위로 계약합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "엘리베이터가 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아쉽게도 엘리베이터는 없고 계단으로 3층까지 올라오셔야 합니다. 짐이 많으시면 입실 날짜를 정할 때 미리 말씀해 주세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "식사나 생활용품도 제공되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "공용 주방에서 커피머신과 시리얼, 쌀을 무료로 이용하실 수 있어요. 밥솥과 조리도구도 갖춰져 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "관리비나 추가 요금이 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "별도 관리비는 없습니다. 전기·수도·인터넷 요금이 월 이용료에 포함되어 있어요. 이용료는 매월 입실일 기준으로 선불, 계좌이체로 내시면 됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "이불·베개도 제공되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "매트리스 방수커버는 제공하고, 이불·베개는 직접 챙겨 오셔야 해요. 수건·세면도구·옷걸이도 개인 준비물입니다. 입실 전 체크리스트를 참고해 주세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "외국인도 입실할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "가능합니다. 영문 입실원서를 준비해 두었습니다."
+      }
+    }
+  ]
+}
+</script>
 <style>
 :root{
   --navy:#14213d; --navy-2:#1f3160; --gold:#c9a24b; --gold-2:#e3c37a;
@@ -125,6 +197,7 @@ section{padding:var(--space-24) 0;scroll-margin-top:64px}
 .room .body{padding:var(--space-6);display:flex;flex-direction:column;gap:6px;flex:1}
 .room h3{font-size:18px;color:var(--navy)}
 .room .desc{color:var(--muted);font-size:14px;flex:1}
+.room .more{align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:600;color:var(--navy);text-decoration:underline;text-underline-offset:3px}
 .price{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:-.02em;margin-top:var(--space-2)}
 .price small{font-size:14px;font-weight:600;color:var(--muted)}
 .badge{align-self:flex-start;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--navy);color:var(--gold-2)}
@@ -369,15 +442,15 @@ footer b{color:#fff}
     <div class="rooms">
       <article class="room rv">
         <button type="button" data-lb="assets/room-standard.webp" data-cap="스탠다드 룸"><img src="assets/room-standard.webp" alt="스탠다드 룸 내부, 창문과 침대, 책상이 있는 방" loading="lazy" width="1200" height="675"></button>
-        <div class="body"><h3>스탠다드 룸</h3><p class="desc">개별 욕실·세탁기를 갖춘 기본형.</p><p class="price">75만원<small> / 월</small></p></div>
+        <div class="body"><h3>스탠다드 룸</h3><p class="desc">개별 욕실·세탁기를 갖춘 기본형.</p><p class="price">75만원<small> / 월</small></p><a class="more" href="https://blog.naver.com/megastay_hwayang/224468438550" target="_blank" rel="noopener">사진 더 보기 →</a></div>
       </article>
       <article class="room rv">
         <button type="button" data-lb="assets/room-deluxe.webp" data-cap="디럭스 룸"><img src="assets/room-deluxe.webp" alt="디럭스 룸 내부" loading="lazy" width="1200" height="900"></button>
-        <div class="body"><h3>디럭스 룸</h3><p class="desc">한층 여유로운 면적과 수납공간.</p><p class="price">80만원<small> / 월</small></p></div>
+        <div class="body"><h3>디럭스 룸</h3><p class="desc">긴 책상과 따로 있는 옷장·서랍장으로 수납이 넉넉한 타입.</p><p class="price">80만원<small> / 월</small></p><a class="more" href="https://blog.naver.com/megastay_hwayang/224468743875" target="_blank" rel="noopener">사진 더 보기 →</a></div>
       </article>
       <article class="room rv">
         <button type="button" data-lb="assets/room-suite.webp" data-cap="스위트 룸"><img src="assets/room-suite.webp" alt="스위트 룸 내부, 넓은 침대와 책상" loading="lazy" width="1200" height="900"></button>
-        <div class="body"><span class="badge">최대 면적</span><h3>스위트 룸</h3><p class="desc">가장 넓은 프리미엄 타입.</p><p class="price">90만원<small> / 월</small></p></div>
+        <div class="body"><span class="badge">최대 면적</span><h3>스위트 룸</h3><p class="desc">침대 옆 통로와 현관이 넓고 큰 붙박이 수납장이 있는 가장 넓은 타입.</p><p class="price">90만원<small> / 월</small></p><a class="more" href="https://blog.naver.com/megastay_hwayang/224468741324" target="_blank" rel="noopener">사진 더 보기 →</a></div>
       </article>
     </div>
     <p class="note rv"><b>공통 조건</b> · 보증금 30만원 · 최소 1개월 계약(단기 숙박 불가) · 공실·호실 배정은 문의 시 안내해 드립니다.</p>
