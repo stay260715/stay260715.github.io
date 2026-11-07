@@ -206,6 +206,38 @@ footer b{color:#fff}
 /* 스크롤 등장 — JS 있을 때만 숨김(크롤러엔 항상 노출) */
 .js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .js .rv.in{opacity:1;transform:none}
+
+/* 스크롤 투어 — 기본은 사진 그리드, JS가 .on을 붙이면 스크롤 연동 연출 */
+.tour{padding:0;background:var(--navy);color:#fff}
+.tour-head{padding-top:var(--space-16);padding-bottom:var(--space-8)}
+.tour-head .eyebrow{color:var(--gold-2)}
+.tour-head h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.03em;line-height:1.25}
+.tour-head p{color:rgba(255,255,255,.75);margin-top:var(--space-3);font-size:17px}
+.tour-stage{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter) var(--space-16);display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-6)}
+.scene{margin:0;position:relative}
+.scene .bg,.tour-bar,.tour-skip{display:none}
+.scene .fg{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px}
+.scene figcaption{margin-top:var(--space-3)}
+.scene .step{display:block;color:var(--gold-2);font-size:13px;font-weight:700;letter-spacing:.08em}
+.scene strong{display:block;font-size:18px;margin:2px 0 4px}
+.scene figcaption span:last-child{color:rgba(255,255,255,.78);font-size:15px}
+.tour.on .tour-track{height:calc(var(--n) * 75vh)}
+.tour.on .tour-stage{position:sticky;top:64px;height:calc(100vh - 64px);height:calc(100svh - 64px);max-width:none;padding:0;display:block;overflow:hidden}
+.tour.on .scene{position:absolute;inset:0;opacity:0;visibility:hidden}
+.tour.on .scene:first-child{opacity:1;visibility:visible}
+.tour.on .scene .fg{position:absolute;inset:0;height:100%;aspect-ratio:auto;border-radius:0;transform-origin:50% 50%}
+.tour.on .scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,33,61,0) 45%,rgba(20,33,61,.88) 100%)}
+.tour.on .scene figcaption{position:absolute;z-index:1;left:max(var(--gutter),calc((100% - var(--maxw))/2 + var(--gutter)));right:var(--gutter);bottom:40px;max-width:560px;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.tour.on .scene strong{font-size:clamp(22px,3.4vw,34px);letter-spacing:-.02em;line-height:1.25;margin:6px 0 8px}
+.tour.on .scene figcaption span:last-child{font-size:clamp(15px,1.8vw,18px);color:rgba(255,255,255,.9)}
+.tour.on .tour-bar{display:block;position:absolute;z-index:2;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.15)}
+.tour.on .tour-bar i{display:block;height:100%;background:var(--gold);transform-origin:0 50%;transform:scaleX(0)}
+.tour.on .tour-skip{display:inline-flex;align-items:center;position:absolute;z-index:2;top:16px;right:16px;min-height:40px;padding:0 16px;border-radius:999px;background:rgba(20,33,61,.6);border:1px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+@media (max-width:820px){.tour.on .scene figcaption{bottom:calc(96px + env(safe-area-inset-bottom))}.tour.on .tour-bar{bottom:calc(70px + env(safe-area-inset-bottom))}}
+@media (min-width:821px){
+  .tour.on .scene .bg{display:block;position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);max-width:none;object-fit:cover;filter:blur(30px) brightness(.5)}
+  .tour.on .scene .fg{object-fit:contain}
+}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}*{transition:none!important}}
 </style>
 </head>
@@ -259,6 +291,50 @@ footer b{color:#fff}
     <div class="btns">
       <a class="btn btn-gold" href="tel:050714917275"><svg><use href="#i-phone"/></svg>0507-1491-7275</a>
       <a class="btn btn-kakao" href="https://open.kakao.com/o/sN9aAUDi" target="_blank" rel="noopener"><svg><use href="#i-chat"/></svg>카카오톡 문의</a>
+    </div>
+  </div>
+</section>
+
+<section id="tour" class="tour" aria-labelledby="tour-h">
+  <div class="wrap tour-head">
+    <span class="eyebrow">WALK-IN TOUR</span>
+    <h2 id="tour-h">스크롤로 미리 둘러보는 메가스테이</h2>
+    <p>현관부터 방, 욕실, 공용 주방까지 실제 사진으로 걸어 들어가 보세요.</p>
+  </div>
+  <div class="tour-track" style="--n:6">
+    <div class="tour-stage">
+      <figure class="scene">
+        <img class="bg" src="assets/g-logo.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="fg" src="assets/g-logo.webp" alt="메가스테이 로고가 보이는 유리 출입문" width="900" height="1200" loading="lazy">
+        <figcaption><span class="step">01 / 06</span><strong>메가스테이 화양점에 오신 걸 환영해요</strong><span>7호선 어린이대공원역에서 걸어서 6분이면 도착해요.</span></figcaption>
+      </figure>
+      <figure class="scene">
+        <img class="bg" src="assets/g-hall2.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="fg" src="assets/g-hall2.webp" alt="밝은 조명의 깨끗한 복도" width="1200" height="900" loading="lazy">
+        <figcaption><span class="step">02 / 06</span><strong>매일 청소하는 밝은 복도</strong><span>공동현관과 객실 모두 디지털 도어락, 복도에는 CCTV가 있어요.</span></figcaption>
+      </figure>
+      <figure class="scene">
+        <img class="bg" src="assets/g-room.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="fg" src="assets/g-room.webp" alt="침대와 책상, 창문이 있는 객실" width="1200" height="900" loading="lazy">
+        <figcaption><span class="step">03 / 06</span><strong>문을 열면, 온전한 내 방</strong><span>침대·책상·TV에 창문까지. 입실 전 도배 점검과 침구 교체를 해 둡니다.</span></figcaption>
+      </figure>
+      <figure class="scene">
+        <img class="bg" src="assets/g-appliance.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="fg" src="assets/g-appliance.webp" alt="객실 안 세탁기, 냉장고, 전자레인지" width="1200" height="900" loading="lazy">
+        <figcaption><span class="step">04 / 06</span><strong>세탁기·냉장고·전자레인지까지 방 안에</strong><span>공용 세탁실 순서를 기다릴 필요가 없어요.</span></figcaption>
+      </figure>
+      <figure class="scene">
+        <img class="bg" src="assets/g-bath.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="fg" src="assets/g-bath.webp" alt="세면대와 변기, 샤워 공간이 있는 개별 욕실" width="900" height="1200" loading="lazy">
+        <figcaption><span class="step">05 / 06</span><strong>방마다 개별 욕실</strong><span>샤워·세면대·변기가 방 안에 있어 줄 서서 씻지 않아도 돼요.</span></figcaption>
+      </figure>
+      <figure class="scene">
+        <img class="bg" src="assets/g-kitchen2.webp" alt="" aria-hidden="true" loading="lazy">
+        <img class="fg" src="assets/g-kitchen2.webp" alt="인덕션과 조리도구가 갖춰진 공용 주방" width="1200" height="900" loading="lazy">
+        <figcaption><span class="step">06 / 06</span><strong>커피·시리얼·쌀 무료, 공용 주방</strong><span>밥만 지으면 한 끼 해결. 주방도 매일 청소해요.</span></figcaption>
+      </figure>
+      <a class="tour-skip" href="#why">투어 건너뛰기 ↓</a>
+      <div class="tour-bar" aria-hidden="true"><i></i></div>
     </div>
   </div>
 </section>
@@ -467,6 +543,37 @@ footer b{color:#fff}
   lb.querySelector('.next').onclick=function(){show(idx+1)};
   lb.addEventListener('click',function(e){if(e.target===lb)close()});
   document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1)});
+
+  // 스크롤 투어: 스크롤 진행도로 장면 줌인 + 다음 장면 크로스페이드 (동작 줄이기 설정이면 그리드 유지)
+  var tour=document.getElementById('tour');
+  if(tour&&window.requestAnimationFrame&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    tour.classList.add('on');
+    var track=tour.querySelector('.tour-track'),stage=tour.querySelector('.tour-stage'),bar=tour.querySelector('.tour-bar i');
+    var scenes=[].slice.call(tour.querySelectorAll('.scene')),fgs=scenes.map(function(s){return s.querySelector('.fg')}),caps=scenes.map(function(s){return s.querySelector('figcaption')});
+    var N=scenes.length,FADE=.3,ZOOM=.18,ticking=false;
+    var clamp=function(v){return v<0?0:v>1?1:v};
+    var render=function(){
+      ticking=false;
+      var span=track.offsetHeight-stage.offsetHeight;
+      var p=span>0?clamp((64-track.getBoundingClientRect().top)/span):0,t=p*N;
+      var ops=scenes.map(function(s,i){return i===0?1:clamp((t-i+FADE)/FADE)});
+      scenes.forEach(function(s,i){
+        // 다음 장면이 완전히 덮으면 숨겨서 페인트 비용 절약
+        var vis=ops[i]>0&&!(i<N-1&&ops[i+1]>=1);
+        s.style.visibility=vis?'visible':'hidden';
+        if(!vis)return;
+        s.style.opacity=ops[i];
+        // 캡션은 교차 구간에서 겹치지 않게: 들어오는 쪽은 늦게, 나가는 쪽은 빨리
+        caps[i].style.opacity=clamp(ops[i]*2-1)*clamp(1-2*(i<N-1?ops[i+1]:0));
+        fgs[i].style.transform='scale('+(1+ZOOM*clamp((t-i+FADE)/(1+FADE)))+')';
+      });
+      bar.style.transform='scaleX('+p+')';
+    };
+    var req=function(){if(!ticking){ticking=true;requestAnimationFrame(render)}};
+    window.addEventListener('scroll',req,{passive:true});
+    window.addEventListener('resize',req);
+    render();
+  }
 })();
 </script>
 </body>
